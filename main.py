@@ -5,14 +5,14 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
-msg = "Running database script..."
-print(msg)
-
 today = datetime.now()
-if today.day == 2:
+if today.day == 1:
     print("Run script today!")
+    print(today.day)
+    monthly_script()
 else:
     print("Not today...")
+    print(today.day)
 
 
 # Connect to database
