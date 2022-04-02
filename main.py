@@ -29,7 +29,7 @@ def monthly_script():
     )
 
     update_balance = (
-        "UPDATE virtual_account SET starting_balance = %s WHERE id = %s"
+        "UPDATE virtual_account SET starting_balance = %s, current_balance = %s WHERE id = %s"
     )
 
     copy_transactions = (
@@ -58,7 +58,7 @@ def monthly_script():
                 new_balance = (starting_balance + amount)
             if (new_balance - amount) != current_balance:
                 logging.warning("Balance error for virtual account")
-            curC.execute(update_balance, (new_balance, vaccount))
+            curC.execute(update_balance, (new_balance, new_balance, vaccount))
             mydb.commit()
             logging.info(curC.rowcount, "record(s) affected")
 
@@ -75,7 +75,7 @@ def monthly_script():
         logging.info("success!!!")
 
 today = datetime.now()
-if today.day == 2:
+if today.day == 1:
     print("Run script today!")
     print(today.day)
     monthly_script()
