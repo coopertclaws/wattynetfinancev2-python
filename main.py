@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 today = datetime.now()
-if today.day == 1:
+if today.day == 2:
     print("Run script today!")
     print(today.day)
     monthly_script()
