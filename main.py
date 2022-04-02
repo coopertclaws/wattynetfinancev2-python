@@ -5,16 +5,6 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
-today = datetime.now()
-if today.day == 2:
-    print("Run script today!")
-    print(today.day)
-    monthly_script()
-else:
-    print("Not today...")
-    print(today.day)
-
-
 # Connect to database
 def monthly_script():
     mydb = mysql.connector.connect (
@@ -83,3 +73,12 @@ def monthly_script():
         curD.execute(drop_transactions)
         mydb.commit()
         logging.info("success!!!")
+
+today = datetime.now()
+if today.day == 2:
+    print("Run script today!")
+    print(today.day)
+    monthly_script()
+else:
+    print("Not today...")
+    print(today.day)
