@@ -96,6 +96,7 @@ def daily_script():
 
     total_balance = curA.fetchall()
 
+    # Can send alert based on this figure
     print("Total balance:", total_balance)
 
 
