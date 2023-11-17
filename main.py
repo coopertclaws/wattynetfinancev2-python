@@ -74,6 +74,31 @@ def monthly_script():
         mydb.commit()
         logging.info("success!!!")
 
+# Daily script that just makes connection to DB for test purposes
+def daily_script():
+
+    # Connect to DB
+    mydb = mysql.connector.connect (
+        host=os.getenv('DB_HOST'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        database=os.getenv('DATABASE')
+    )
+    # Create db connection buffers
+    curA = mydb.cursor(buffered=True)
+
+    # Get total balance for all virtual accounts that we're interested in (matching physical acct 51)
+    sum_total_balance = (
+        "SELECT SUM(current_balance) FROM virtual_account WHERE physical_account = '51'"
+    )
+
+    curA.execute(sum_total_balance)
+
+    total_balance = curA.fetchall()
+
+    print("Total balance:", total_balance)
+
+
 today = datetime.now()
 if today.day == 1:
     print("Run script today!")
@@ -81,4 +106,5 @@ if today.day == 1:
     monthly_script()
 else:
     print("Not today...")
+    daily_script()
     print(today.day)
