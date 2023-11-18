@@ -83,8 +83,7 @@ def daily_script():
         host=os.getenv('DB_HOST'),
         user=os.getenv('DB_USER'),
         password=os.getenv('DB_PASSWORD'),
-        database=os.getenv('DATABASE'),
-        ssl={'ca': '/DigiCertGlobalRootCA.crt.pem'}
+        database=os.getenv('DATABASE')
     )
     # Create db connection buffers
     curA = mydb.cursor(buffered=True)
