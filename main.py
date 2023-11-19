@@ -12,7 +12,7 @@ def monthly_script():
         user=os.getenv('DB_USER'),
         password=os.getenv('DB_PASSWORD'),
         database=os.getenv('DATABASE'),
-        ssl={'ca': '/DigiCertGlobalRootCA.crt.pem'}
+        ssl={'ca': 'DigiCertGlobalRootCA.crt.pem'}
     )
     # Create db connection buffers
     curA = mydb.cursor(buffered=True)
